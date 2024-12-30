@@ -12,16 +12,20 @@ import slide5 from '../../assets/home/slide5.jpg';
 const Category = () => {
     return (
         <div className="w-11/12 mx-auto mt-24">
-            <p className="text-center md:text-xl text-base text-yellow-600">--From 8:00am to 10:00pm--</p>
-            <div className="divider"></div>
-            <h1 className="text-center font-bold md:text-4xl text-xl">Order Online</h1>
-            <div className="divider mb-10"></div>
+            <div className='lg:w-3/12 mx-auto'>
+                <p className="text-center md:text-xl text-base text-yellow-600">--From 8:00am to 10:00pm--</p>
+                <div className="divider"></div>
+                <h1 className="text-center font-bold md:text-4xl text-xl">Order Online</h1>
+                <div className="divider mb-10"></div>
+            </div>
             <Swiper
+               
                 slidesPerView={4}
                 spaceBetween={30}
                 centeredSlides={true}
                 pagination={{
                     clickable: true,
+                    
                 }}
                 modules={[Pagination]}
                 className="mySwiper"
@@ -46,7 +50,7 @@ const Category = () => {
                     <div className="relative">
                         <img className="w-full h-auto" src={slide3} alt="Slide 3" />
                         <h1 className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-center text-xs md:text-2xl font-bold py-2">
-                        Soups
+                            Soups
                         </h1>
                     </div>
                 </SwiperSlide>
@@ -54,7 +58,7 @@ const Category = () => {
                     <div className="relative">
                         <img className="w-full h-auto" src={slide4} alt="Slide 4" />
                         <h1 className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-center text-xs md:text-2xl font-bold py-2">
-                              Desserts
+                            Desserts
                         </h1>
                     </div>
                 </SwiperSlide>
