@@ -18,7 +18,7 @@ const NavBar = () => {
     </>
     return (
 
-        <div className="navbar">
+        <div className="navbar fixed z-30 text-white bg-black bg-opacity-30">
             <div className="navbar-start ">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost  lg:hidden">
@@ -37,13 +37,13 @@ const NavBar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content  text-white rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-black  text-white rounded-box z-[1] mt-3 w-52 p-2 shadow">
                         {
                             links
                         }
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-base md:text-2xl ">Bistro Boss</a>
+                <a className="btn btn-ghost font-bold text-base md:text-2xl border bg-black bg-opacity-10">BISTRO BOSS</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 text-xl ">
@@ -57,11 +57,7 @@ const NavBar = () => {
 
 
 
-                <Link to='/login' className="relative inline-flex items-center justify-center p-4 px-5 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out rounded-full shadow-xl group hover:ring-1 hover:ring-purple-500">
-                    <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 via-purple-600 to-pink-700"></span>
-                    <span className="absolute bottom-0 right-0 block w-64 h-64 mb-32 mr-4 transition duration-500 origin-bottom-left transform rotate-45 translate-x-24 bg-pink-500 rounded-full opacity-30 group-hover:rotate-90 ease"></span>
-                    <span className="relative text-white">Login</span>
-                </Link>
+               <Link className='btn font-bold md:text-xl'>Login</Link>
 
 
 
