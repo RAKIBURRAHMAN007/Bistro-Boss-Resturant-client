@@ -1,5 +1,6 @@
 import React from 'react';
 import MenuItemCard from '../../PopularMenu/MenuItemCard';
+import { Link } from 'react-router-dom';
 
 const MenuCategory = ({items}) => {
     return (
@@ -11,7 +12,7 @@ const MenuCategory = ({items}) => {
 
             </div>
             <div className='mt-7 flex justify-center'>
-                <button className='btn btn-outline border-0 border-b-4 border-black text-black'>ORDER YOUR FAVORITE FOOD</button>
+               <Link to='/order'> <button className='btn btn-outline border-0 border-b-4 border-black text-black'>ORDER YOUR FAVORITE FOOD</button></Link>
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import featuredImg from '../../assets/home/featured.jpg'
+import { Link } from 'react-router-dom';
 const Featured = () => {
     return (
         <div className='w-11/12 mx-auto mt-28 bg-fixed text-white ' style={{ backgroundImage: `url(${featuredImg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
@@ -23,7 +24,7 @@ const Featured = () => {
                         <p>
                             "Explore our exclusive collection of featured items, thoughtfully curated to showcase exceptional quality and design. These top picks are perfect for adding a touch of style and uniqueness to your experience. Don’t miss out on discovering something truly special!
                         </p>
-                        <button className='btn btn-outline border-0 border-b-4 border-white text-white'>Order Now</button>
+                        <Link to='/order'><button className='btn btn-outline border-0 border-b-4 border-white text-white'>Order Now</button></Link>
 
                     </div>
                 </div>

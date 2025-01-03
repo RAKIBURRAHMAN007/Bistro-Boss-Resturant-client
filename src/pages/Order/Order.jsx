@@ -5,6 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import UseMenu from '../../hooks/UseMenu';
 import FoodCard from '../../components/FoodCard';
+import { Helmet } from 'react-helmet';
 const Order = () => {
     const [tabIndex, setTabIndex] = useState(0);
     const [menu, loading] = UseMenu();
@@ -16,6 +17,11 @@ const Order = () => {
     const drinks = menu.filter(item => item.category === 'drinks');
     return (
         <div className='space-y-28 '>
+             <Helmet>
+                <meta charSet="utf-8" />
+                <title>Bistro Boss | Order</title>
+                
+            </Helmet>
             <Cover img={orderImg} title={'Order Food'} description={'Order your favorites effortlessly at Bistro Boss and enjoy a delicious meal in no time!'} ></Cover>
 
             <div className='w-11/12 mx-auto'>

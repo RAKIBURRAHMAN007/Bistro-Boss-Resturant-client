@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MenuItemCard from './MenuItemCard';
+import { Link } from 'react-router-dom';
 
 const PopularMenu = () => {
     const [menu, setMenu] = useState([]);
@@ -27,7 +28,7 @@ const PopularMenu = () => {
 
             </div>
             <div className='mt-7 flex justify-center'>
-                <button className='btn btn-outline border-0 border-b-4 border-black text-black'>View Full  Menu</button>
+               <Link to='/ourMenu'> <button className='btn btn-outline border-0 border-b-4 border-black text-black'>View Full  Menu</button></Link>
             </div>
 
         </div>
