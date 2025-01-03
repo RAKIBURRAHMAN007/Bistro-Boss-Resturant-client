@@ -1,14 +1,16 @@
-import React, { useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 
 const NavBar = () => {
-  
+    const location = useLocation();
+    const [active, setActive] = useState(true);
+
     const links = <>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/learning'>Start-Learning</Link></li>
-        <li><Link to='/tutorials'>Tutorials</Link></li>
-        <li><Link to='/aboutUs'>About-Us</Link></li>
+        <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/ourMenu'>OUR MENU</NavLink></li>
+        <li><NavLink to='/tutorials'>Tutorials</NavLink></li>
+        <li><NavLink to='/aboutUs'>About-Us</NavLink></li>
         {/* {
             user && <li><Link to='/myProfile'>My-Profile</Link></li>
 
@@ -18,7 +20,7 @@ const NavBar = () => {
     </>
     return (
 
-        <div className="navbar fixed z-30 text-white bg-black bg-opacity-30">
+        <div className={`navbar fixed z-30 text-white bg-black bg-opacity-30 `}>
             <div className="navbar-start ">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost  lg:hidden">
@@ -57,7 +59,7 @@ const NavBar = () => {
 
 
 
-               <Link className='btn font-bold md:text-xl'>Login</Link>
+                <Link className='btn font-bold md:text-xl'>Login</Link>
 
 
 
