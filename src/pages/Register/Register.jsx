@@ -7,11 +7,12 @@ import GoogleButton from 'react-google-button'
 import { toast } from 'react-toastify';
 import { auth, AuthContext } from '../../providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import { Helmet } from 'react-helmet';
 const Register = () => {
     const [disabled, setDisabled] = useState(true);
     const captchaRef = useRef(null);
     const location = useLocation();
-    const {createNewUser,setUser} = useContext(AuthContext)
+    const { createNewUser, setUser } = useContext(AuthContext)
     const navigate = useNavigate();
 
     const handleRegister = e => {
@@ -19,10 +20,11 @@ const Register = () => {
         const email = e.target.email.value;
         const name = e.target.name.value;
         const password = e.target.password.value;
+        const photo = e.target.photoUrl.value;
         console.log(name)
         const regex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
         if (!regex.test(password)) {
-           
+
             toast.error('password must be  6 characters long & at-least 1 upper and lower case letter.')
 
 
@@ -33,24 +35,26 @@ const Register = () => {
             .then(result => {
                 const registeredUser = result.user;
                 toast.success('User Registered Successfully')
-               
+
                 navigate(location?.state ? location.state : '/')
                 console.log(registeredUser)
                 const profile = {
                     displayName: name,
-                   
+                    photoURL: photo
+
                 }
-                
-                updateProfile(auth.currentUser,profile)
+
+                updateProfile(auth.currentUser, profile)
                 setUser({
                     ...registeredUser,
                     displayName: name,
-                    
+                    photoURL: photo
+
                 });
-                
+
             })
             .catch(err => {
-               
+
                 toast.error(err.message)
 
             })
@@ -65,6 +69,10 @@ const Register = () => {
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
         }}>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Bistro Boss | Register</title>
+            </Helmet>
             <div style={{
                 boxShadow: "6px 6px 10px rgba(0, 0, 0, 0.3)", // Bottom-right shadow
 
@@ -97,18 +105,30 @@ const Register = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
+                                    <span className="label-text  text-xl ">Photo URL</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    name='photoUrl'
+                                    placeholder="Enter your photo URL"
+                                    className=" input input-bordered"
+
+                                />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
                                     <span className="label-text text-xl font-mono">Password</span>
                                 </label>
                                 <input type="password" name='password' placeholder="password" className="font-mono input input-bordered" required />
 
 
-                               
+
 
                             </div>
-                          
+
 
                             <div className="form-control mt-6">
-                                <button  className="btn btn-primary border-none bg-[#dbb884] text-white text-xl font-mono">Register</button>
+                                <button className="btn btn-primary border-none bg-[#dbb884] text-white text-xl font-mono">Register</button>
                             </div>
                         </form>
                     </div>

@@ -6,12 +6,13 @@ import authImg from '../../assets/others/authentication1.png'
 import GoogleButton from 'react-google-button'
 import { AuthContext } from '../../providers/AuthProvider';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
     const captchaRef = useRef(null);
     const navigate = useNavigate();
     const location = useLocation();
-    const {userLogin,setUser,googleSignIn} = useContext(AuthContext);
+    const { userLogin, setUser, googleSignIn } = useContext(AuthContext);
     useEffect(() => {
         loadCaptchaEnginge(6);
     }, [])
@@ -25,7 +26,7 @@ const Login = () => {
         }
 
     }
-    const handleGoogleSignIn = () =>{
+    const handleGoogleSignIn = () => {
         googleSignIn();
         toast.success('Login Successful');
 
@@ -40,19 +41,19 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         userLogin(email, password)
-        .then(result => {
-            const user = result.user;
-            toast.success("Login Successful")
-            setUser(user);
-            navigate(location?.state ? location.state : '/')
-        })
-        .catch(err => {
-
-            
-            toast.error(err.message)
+            .then(result => {
+                const user = result.user;
+                toast.success("Login Successful")
+                setUser(user);
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(err => {
 
 
-        })
+                toast.error(err.message)
+
+
+            })
 
     }
     return (
@@ -64,6 +65,10 @@ const Login = () => {
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
         }}>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Bistro Boss | Login</title>
+            </Helmet>
             <div style={{
                 boxShadow: "6px 6px 10px rgba(0, 0, 0, 0.3)", // Bottom-right shadow
 
@@ -112,8 +117,8 @@ const Login = () => {
                                 <label className="label">
                                     <LoadCanvasTemplate />
                                 </label>
-                                <input onBlur={handleValidateCaptcha} type="text"  name='captcha' placeholder="type the captcha above" className="font-mono input input-bordered" required />
-                                
+                                <input onBlur={handleValidateCaptcha} type="text" name='captcha' placeholder="type the captcha above" className="font-mono input input-bordered" required />
+
 
 
                             </div>
