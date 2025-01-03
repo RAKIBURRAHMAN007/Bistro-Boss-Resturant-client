@@ -8,8 +8,8 @@ const NavBar = () => {
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/ourMenu'>OUR MENU</NavLink></li>
-        <li><NavLink to='/tutorials'>Tutorials</NavLink></li>
+        <li><NavLink to='/ourMenu'>OUR-MENU</NavLink></li>
+        <li><NavLink to='/order'>Order-Food</NavLink></li>
         <li><NavLink to='/aboutUs'>About-Us</NavLink></li>
         {/* {
             user && <li><Link to='/myProfile'>My-Profile</Link></li>
