@@ -59,7 +59,7 @@ const NavBar = () => {
 
 
 
-                <Link className='btn font-bold md:text-xl'>Login</Link>
+                <Link to='/login' className='btn font-bold md:text-xl'>Login</Link>
 
 
 
