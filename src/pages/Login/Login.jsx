@@ -1,15 +1,33 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { Link } from 'react-router-dom';
 import bgImg from '../../assets/others/authentication.png'
 import authImg from '../../assets/others/authentication1.png'
 const Login = () => {
-    const handleLogin = () => {
+    const [disabled,setDisabled] = useState(true);
+    const captchaRef = useRef(null);
+    useEffect(()=>{
+        loadCaptchaEnginge(6); 
+    },[])
+    
+    const handleValidateCaptcha = e =>{
+        const user_captcha_value  = captchaRef.current.value;
+        if(validateCaptcha(user_captcha_value)===true){
+            setDisabled(false);
+            
+
+        }
+       
+    }
+
+
+    const handleLogin = e => {
 
     }
     return (
-        <div className='p-10' style={{
+        <div className='p-10 h-full' style={{
             backgroundImage: `url(${bgImg})`,
-            height: "100vh",
+
             width: "100vw",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
@@ -44,13 +62,7 @@ const Login = () => {
                                     <span className="label-text text-xl font-mono">Password</span>
                                 </label>
                                 <input type="password" name='password' placeholder="password" className="font-mono input input-bordered" required />
-                                {
-                                    // error.login && <label className="label text-sm text-red-600">
-                                    //     {error.login}
 
-
-                                    // </label>
-                                }
 
                                 <label className="label">
                                     <span
@@ -65,8 +77,18 @@ const Login = () => {
                                 </label>
 
                             </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <LoadCanvasTemplate />
+                                </label>
+                                <input type="text" ref={captchaRef} name='captcha' placeholder="type the captcha above" className="font-mono input input-bordered" required />
+                                <button onClick={handleValidateCaptcha} className='btn btn-outline btn-xs mt-1'>Validate</button>
+
+
+                            </div>
+                             
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary border-none bg-[#dbb884] text-white text-xl font-mono">Login</button>
+                                <button disabled={disabled} className="btn btn-primary border-none bg-[#dbb884] text-white text-xl font-mono">Login</button>
                             </div>
                         </form>
                     </div>
