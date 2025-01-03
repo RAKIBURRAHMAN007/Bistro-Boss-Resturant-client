@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 
 const NavBar = () => {
     const location = useLocation();
     const [active, setActive] = useState(true);
+    const {user,logOut} = useContext(AuthContext);
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -56,10 +58,14 @@ const NavBar = () => {
             </div>
             <div className="navbar-end">
 
+                {
+                    user? <Link onClick={logOut} className='btn font-bold md:text-xl'>Logout</Link> : <Link to='/login' className='btn font-bold md:text-xl'>Login</Link>
+                }
 
 
 
-                <Link to='/login' className='btn font-bold md:text-xl'>Login</Link>
+
+                
 
 
 

@@ -1,27 +1,58 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import bgImg from '../../assets/others/authentication.png'
 import authImg from '../../assets/others/authentication1.png'
+import GoogleButton from 'react-google-button'
+import { AuthContext } from '../../providers/AuthProvider';
+import { toast } from 'react-toastify';
 const Login = () => {
-    const [disabled,setDisabled] = useState(true);
+    const [disabled, setDisabled] = useState(true);
     const captchaRef = useRef(null);
-    useEffect(()=>{
-        loadCaptchaEnginge(6); 
-    },[])
-    
-    const handleValidateCaptcha = e =>{
-        const user_captcha_value  = captchaRef.current.value;
-        if(validateCaptcha(user_captcha_value)===true){
+    const navigate = useNavigate();
+    const location = useLocation();
+    const {userLogin,setUser,googleSignIn} = useContext(AuthContext);
+    useEffect(() => {
+        loadCaptchaEnginge(6);
+    }, [])
+
+    const handleValidateCaptcha = e => {
+        const user_captcha_value = e.target.value;
+        if (validateCaptcha(user_captcha_value) === true) {
             setDisabled(false);
-            
+
 
         }
-       
+
+    }
+    const handleGoogleSignIn = () =>{
+        googleSignIn();
+        toast.success('Login Successful');
+
+        navigate(location?.state ? location.state : '/')
+
+
     }
 
 
     const handleLogin = e => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        userLogin(email, password)
+        .then(result => {
+            const user = result.user;
+            toast.success("Login Successful")
+            setUser(user);
+            navigate(location?.state ? location.state : '/')
+        })
+        .catch(err => {
+
+            
+            toast.error(err.message)
+
+
+        })
 
     }
     return (
@@ -81,12 +112,12 @@ const Login = () => {
                                 <label className="label">
                                     <LoadCanvasTemplate />
                                 </label>
-                                <input type="text" ref={captchaRef} name='captcha' placeholder="type the captcha above" className="font-mono input input-bordered" required />
-                                <button onClick={handleValidateCaptcha} className='btn btn-outline btn-xs mt-1'>Validate</button>
+                                <input onBlur={handleValidateCaptcha} type="text"  name='captcha' placeholder="type the captcha above" className="font-mono input input-bordered" required />
+                                
 
 
                             </div>
-                             
+
                             <div className="form-control mt-6">
                                 <button disabled={disabled} className="btn btn-primary border-none bg-[#dbb884] text-white text-xl font-mono">Login</button>
                             </div>
@@ -95,10 +126,10 @@ const Login = () => {
                     <div className='flex justify-center w-2/4 mx-auto'>
                         <h1 className='font-mono text-base'>New to Bistro Boss? <Link to='/register' className='underline text-[#dbb884]'>Register Now</Link> </h1>
                     </div>
-                    <div className='flex justify-center mt-4'>
-                        {/* <GoogleButton
+                    <div className='flex justify-center mt-1 mb-4'>
+                        <GoogleButton
                             onClick={handleGoogleSignIn}
-                        /> */}
+                        />
                     </div>
                 </div>
 
