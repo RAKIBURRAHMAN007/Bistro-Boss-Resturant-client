@@ -6,7 +6,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 const NavBar = () => {
     const location = useLocation();
     const [active, setActive] = useState(true);
-    const {user,logOut} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -56,16 +56,23 @@ const NavBar = () => {
                     }
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end ">
+                {
+                    user && <button className="btn mr-2">
+                        <img className='w-6' src="https://img.icons8.com/?size=100&id=BBhHIwJINbBl&format=png&color=000000" alt="" />
+                        <div className="badge badge-secondary">0</div>
+                    </button>
+                }
 
                 {
-                    user? <Link onClick={logOut} className='btn font-bold md:text-xl'>Logout</Link> : <Link to='/login' className='btn font-bold md:text-xl'>Login</Link>
+                    user ? <Link onClick={logOut} className='btn font-bold md:text-xl'>Logout</Link> : <Link to='/login' className='btn font-bold md:text-xl'>Login</Link>
+
                 }
 
 
 
 
-                
+
 
 
 

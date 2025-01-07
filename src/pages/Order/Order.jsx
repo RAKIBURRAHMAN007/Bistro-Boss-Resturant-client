@@ -34,14 +34,14 @@ const Order = () => {
                         <Tab >Drinks</Tab>
                     </TabList>
                     <TabPanel>
-                        <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-4 mt-24'>
+                        <div className='grid lg:grid-cols-4 md:grid-cols-2 gap-4 mt-24'>
                             {
                                 salad.map(item => <FoodCard item={item}></FoodCard>)
                             }
                         </div>
                     </TabPanel>
                     <TabPanel>
-                        <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-4 mt-24'>
+                        <div className='grid lg:grid-cols-4 md:grid-cols-2 gap-4 mt-24'>
                             {
                                 pizza.map(item => <FoodCard item={item}></FoodCard>)
                             }
@@ -49,7 +49,7 @@ const Order = () => {
 
                     </TabPanel>
                     <TabPanel>
-                        <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-4 mt-24'>
+                        <div className='grid lg:grid-cols-4 md:grid-cols-2 gap-4 mt-24'>
                             {
                                 soup.map(item => <FoodCard item={item}></FoodCard>)
                             }
@@ -57,7 +57,7 @@ const Order = () => {
 
                     </TabPanel>
                     <TabPanel>
-                        <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-4 mt-24'>
+                        <div className='grid lg:grid-cols-4 md:grid-cols-2 gap-4 mt-24'>
                             {
                                deserts.map(item => <FoodCard item={item}></FoodCard>)
                             }
@@ -65,7 +65,7 @@ const Order = () => {
 
                     </TabPanel>
                     <TabPanel>
-                        <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-4 mt-24'>
+                        <div className='grid lg:grid-cols-4 md:grid-cols-2 gap-4 mt-24'>
                             {
                                drinks.map(item => <FoodCard item={item}></FoodCard>)
                             }
