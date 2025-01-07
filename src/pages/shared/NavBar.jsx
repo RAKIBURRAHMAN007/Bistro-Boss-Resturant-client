@@ -1,12 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import UseCart from '../../hooks/UseCart';
 
 
 const NavBar = () => {
     const location = useLocation();
     const [active, setActive] = useState(true);
     const { user, logOut } = useContext(AuthContext);
+    const [cart] = UseCart();
+   
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -60,7 +63,7 @@ const NavBar = () => {
                 {
                     user && <button className="btn mr-2">
                         <img className='w-6' src="https://img.icons8.com/?size=100&id=BBhHIwJINbBl&format=png&color=000000" alt="" />
-                        <div className="badge badge-secondary">0</div>
+                        <div className="badge badge-secondary">+{cart.length}</div>
                     </button>
                 }
 
