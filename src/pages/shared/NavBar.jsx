@@ -9,7 +9,7 @@ const NavBar = () => {
     const [active, setActive] = useState(true);
     const { user, logOut } = useContext(AuthContext);
     const [cart] = UseCart();
-   
+
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -50,7 +50,7 @@ const NavBar = () => {
                         }
                     </ul>
                 </div>
-                <a className="btn btn-ghost font-bold text-base md:text-2xl border bg-black bg-opacity-10">BISTRO BOSS</a>
+                <a className="btn btn-ghost w-16 md:w-48 font-bold text-sm md:text-2xl border bg-black bg-opacity-10">BISTRO BOSS</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 text-xl ">
@@ -61,10 +61,10 @@ const NavBar = () => {
             </div>
             <div className="navbar-end ">
                 {
-                    user && <button className="btn mr-2">
-                        <img className='w-6' src="https://img.icons8.com/?size=100&id=BBhHIwJINbBl&format=png&color=000000" alt="" />
-                        <div className="badge badge-secondary">+{cart.length}</div>
-                    </button>
+                    user && <Link to='/dashboard/cart'><button className="btn  mr-2">
+                        <img className='md:w-6 w-3' src="https://img.icons8.com/?size=100&id=BBhHIwJINbBl&format=png&color=000000" alt="" />
+                        <div className="bg-orange-400 rounded-xl md:text-base text-xs text-white p-[1px] md:p-1">+{cart.length}</div>
+                    </button></Link>
                 }
 
                 {
