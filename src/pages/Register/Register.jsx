@@ -8,7 +8,9 @@ import { toast } from 'react-toastify';
 import { auth, AuthContext } from '../../providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import { Helmet } from 'react-helmet';
+import UseAxiosPublic from '../../hooks/UseAxiosPublic';
 const Register = () => {
+    const axiosPublic = UseAxiosPublic();
     const [disabled, setDisabled] = useState(true);
     const captchaRef = useRef(null);
     const location = useLocation();
@@ -34,7 +36,7 @@ const Register = () => {
         createNewUser(email, password)
             .then(result => {
                 const registeredUser = result.user;
-                toast.success('User Registered Successfully')
+                
 
                 navigate(location?.state ? location.state : '/')
                 console.log(registeredUser)
@@ -43,8 +45,22 @@ const Register = () => {
                     photoURL: photo
 
                 }
+                const userInfo = {
+                    displayName: name,
+                    email: email
+
+                }
 
                 updateProfile(auth.currentUser, profile)
+                .then(()=>{
+                    axiosPublic.post('/users',userInfo)
+                    .then(res=>{
+                        if(res.data.insertedId){
+                            toast.success('User Registered Successfully')
+
+                        }
+                    })
+                })
                 setUser({
                     ...registeredUser,
                     displayName: name,

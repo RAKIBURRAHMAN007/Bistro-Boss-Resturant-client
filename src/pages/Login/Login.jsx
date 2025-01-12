@@ -7,11 +7,13 @@ import GoogleButton from 'react-google-button'
 import { AuthContext } from '../../providers/AuthProvider';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet';
+import UseAxiosPublic from '../../hooks/UseAxiosPublic';
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
     const captchaRef = useRef(null);
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosPublic = UseAxiosPublic();
     const { userLogin, setUser, googleSignIn } = useContext(AuthContext);
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -27,10 +29,28 @@ const Login = () => {
 
     }
     const handleGoogleSignIn = () => {
-        googleSignIn();
-        toast.success('Login Successful');
+        googleSignIn()
+            .then(result => {
+                const userInfo = {
+                    email: result.user?.email,
+                    name: result.user?.displayName
+                }
+                console.log('rsult',result)
+               
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        console.log(res.data)
 
-        navigate(location?.state ? location.state : '/')
+                        toast.success('Login Successful');
+
+                        navigate(location?.state ? location.state : '/')
+
+                    })
+
+
+
+            })
+
 
 
     }
