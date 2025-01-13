@@ -11,6 +11,7 @@ import Register from "../pages/Register/Register";
 import DashBoard from "../Layout/DashBoard";
 import Cart from "../pages/Dashboard/Cart";
 import PrivateRouter from "./PrivateRouter";
+import AllUser from "../pages/Dashboard/AllUsers/AllUser";
 
 
 export const router = createBrowserRouter([
@@ -47,6 +48,11 @@ export const router = createBrowserRouter([
         {
           path: 'cart',
           element: <Cart></Cart>
+        },
+        // admin routes
+        {
+          path: 'users',
+          element: <AllUser></AllUser>
         }
       ]
     }

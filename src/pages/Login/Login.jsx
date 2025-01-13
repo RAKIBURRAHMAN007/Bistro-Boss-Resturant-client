@@ -33,7 +33,7 @@ const Login = () => {
             .then(result => {
                 const userInfo = {
                     email: result.user?.email,
-                    name: result.user?.displayName
+                    displayName: result.user?.displayName
                 }
                 console.log('rsult',result)
                
