@@ -1,9 +1,10 @@
 import React from 'react';
 import { FaAd, FaBook, FaCalendar, FaEnvelope, FaHome, FaList, FaSearch, FaShoppingCart, FaUser, FaUsers, FaUtensils, FaUtensilSpoon } from 'react-icons/fa';
 import { NavLink, Outlet } from 'react-router-dom';
+import UseAdmin from '../hooks/UseAdmin';
 
 const DashBoard = () => {
-    const isAdmin = true;
+    const [isAdmin]= UseAdmin();
     return (
         <div className='flex'>
             <div className='md:w-64 w-40 min-h-screen bg-orange-400'>
