@@ -61,7 +61,7 @@ const NavBar = () => {
             </div>
             <div className="navbar-end ">
                 {
-                    user && <Link to='/dashboard/cart'><button className="btn  mr-2">
+                    user && <Link to='/dashboard'><button className="btn  mr-2">
                         <img className='md:w-6 w-3' src="https://img.icons8.com/?size=100&id=BBhHIwJINbBl&format=png&color=000000" alt="" />
                         <div className="bg-orange-400 rounded-xl md:text-base text-xs text-white p-[1px] md:p-1">+{cart.length}</div>
                     </button></Link>
