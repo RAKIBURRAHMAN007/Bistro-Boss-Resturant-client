@@ -47,9 +47,9 @@ const DashBoard = () => {
                                     <NavLink to='/dashboard/cart'> <FaShoppingCart></FaShoppingCart>My Cart</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/dashboard/reservation">
+                                    <NavLink to="/dashboard/paymentHIstory">
                                         <FaCalendar></FaCalendar>
-                                        Reservation</NavLink>
+                                       Payment History</NavLink>
                                 </li>
                                 <li>
 
